@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "login": "Connexion",
+    "signup": "Commencer"
+  },
+  "hero": {
+    "badge": "Plateforme N°1 pour les créateurs au Maroc",
+    "title": "Publiez au bon moment,",
+    "title2": "à chaque fois.",
+    "description": "Crono analyse votre audience et vous dit exactement quand publier pour maximiser vos vues, likes et abonnés.",
+    "cta": "Commencer gratuitement",
+    "cta2": "Voir la démo"
+  },
+  "features": {
+    "title": "Tout ce dont vous avez besoin",
+    "subtitle": "Des outils puissants pour optimiser votre présence sur les réseaux sociaux",
+    "f1_title": "Meilleur moment",
+    "f1_desc": "Découvrez exactement quand votre audience est la plus active",
+    "f2_title": "Analyse IA",
+    "f2_desc": "Notre IA apprend de vos performances pour des recommandations personnalisées",
+    "f3_title": "Multi-plateforme",
+    "f3_desc": "Instagram, TikTok et plus encore dans une seule application",
+    "f4_title": "Données communautaires",
+    "f4_desc": "Bénéficiez des insights de milliers de créateurs au Maroc",
+    "f5_title": "Calendrier intelligent",
+    "f5_desc": "Planifiez toute votre semaine en un seul clic",
+    "f6_title": "Rapports détaillés",
+    "f6_desc": "Suivez vos progrès avec des analytics avancées"
+  },
+  "stats": {
+    "s1": "Créateurs actifs",
+    "s2": "Posts optimisés",
+    "s3": "Augmentation moyenne des vues",
+    "s4": "Satisfaction client"
+  },
+  "pricing": {
+    "title": "Tarifs simples et transparents",
+    "subtitle": "Commencez gratuitement, évoluez selon vos besoins",
+    "free": "Gratuit",
+    "pro": "Pro",
+    "agency": "Agence",
+    "month": "/mois",
+    "cta_free": "Commencer",
+    "cta_pro": "Essai gratuit 14 jours",
+    "cta_agency": "Contacter"
+  },
+  "footer": {
+    "rights": "Tous droits réservés"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "login": "Login",
+    "signup": "Get Started"
+  },
+  "hero": {
+    "badge": "The #1 Platform for Creators in Morocco",
+    "title": "Post at the right time,",
+    "title2": "every time.",
+    "description": "Crono analyzes your audience and tells you exactly when to post to maximize your views, likes and followers.",
+    "cta": "Start for free",
+    "cta2": "Watch demo"
+  },
+  "features": {
+    "title": "Everything you need",
+    "subtitle": "Powerful tools to optimize your social media presence",
+    "f1_title": "Best Time",
+    "f1_desc": "Discover exactly when your audience is most active",
+    "f2_title": "AI Analysis",
+    "f2_desc": "Our AI learns from your performance for personalized recommendations",
+    "f3_title": "Multi-platform",
+    "f3_desc": "Instagram, TikTok and more in one single app",
+    "f4_title": "Community Data",
+    "f4_desc": "Benefit from insights of thousands of creators in Morocco",
+    "f5_title": "Smart Calendar",
+    "f5_desc": "Plan your entire week in one click",
+    "f6_title": "Detailed Reports",
+    "f6_desc": "Track your progress with advanced analytics"
+  },
+  "stats": {
+    "s1": "Active Creators",
+    "s2": "Optimized Posts",
+    "s3": "Average View Increase",
+    "s4": "Customer Satisfaction"
+  },
+  "pricing": {
+    "title": "Simple and transparent pricing",
+    "subtitle": "Start free, scale as you grow",
+    "free": "Free",
+    "pro": "Pro",
+    "agency": "Agency",
+    "month": "/month",
+    "cta_free": "Get Started",
+    "cta_pro": "14-day free trial",
+    "cta_agency": "Contact us"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}
