@@ -1,4 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from 'next/server';
 
 const intlMiddleware = createMiddleware({
   locales: ['fr', 'ar', 'en'],
@@ -9,41 +10,38 @@ const intlMiddleware = createMiddleware({
 export default function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  // 1. Pehle next-intl ko language routing handle karne do
-  const response = intlMiddleware(request);
-
-  // 2. API aur Auth Callbacks ko bypass karo
-  if (pathname.includes('/api/') || pathname.includes('/auth/callback')) {
-    return response;
+  // 1. API aur Auth ko sabse PEHLE bypass karo (taaki next-intl crash na ho)
+  if (pathname.startsWith('/api') || pathname.startsWith('/auth')) {
+    return NextResponse.next();
   }
 
-  // 3. Language prefix (fr/ar/en) hata kar clean route nikalo
+  // 2. Ab next-intl ko apni language routing karne do
+  const response = intlMiddleware(request);
+
+  // 3. Language prefix hata kar clean route nikalo
   const cleanPath = pathname.replace(/^\/(fr|ar|en)/, '') || '/';
-  const locale = pathname.match(/^\/(fr|ar|en)/)?.[1] || 'fr';
+  const localeMatch = pathname.match(/^\/(fr|ar|en)/);
+  const locale = localeMatch ? localeMatch[1] : 'fr';
 
   // 4. Supabase Auth Cookie Check karo
-  // Supabase cookie mein default '-auth-token' hota hai
   const hasSession = request.cookies.getAll().some(cookie => cookie.name.includes('-auth-token'));
 
-  // 5. Route Rules define karo
+  // 5. Route Rules
   const isProtectedRoute = cleanPath.startsWith('/dashboard') || cleanPath.startsWith('/analytics') || cleanPath.startsWith('/onboarding');
   const isAuthRoute = cleanPath === '/login' || cleanPath === '/signup';
 
-  // 6. Security Redirects (The Guard)
+  // 6. Security Redirects (Using standard NextResponse)
   if (isProtectedRoute && !hasSession) {
-    // Bina login kiye dashboard/onboarding jane walo ko login par bhejo
-    return Response.redirect(new URL(`/${locale}/login`, request.url));
+    return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
   }
 
   if (isAuthRoute && hasSession) {
-    // Logged in user agar login/signup page khele, toh dashboard par bhejo
-    return Response.redirect(new URL(`/${locale}/dashboard`, request.url));
+    return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url));
   }
 
   return response;
 }
 
 export const config = {
-  // Static files aur _next folders ko ignore karo taaki app fast rahe
   matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };
