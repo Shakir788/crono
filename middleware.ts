@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const intlMiddleware = createMiddleware({
   locales: ['fr', 'ar', 'en'],
@@ -7,10 +7,10 @@ const intlMiddleware = createMiddleware({
   localePrefix: 'always'
 });
 
-export default function middleware(request) {
+export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // 1. API aur Auth ko sabse PEHLE bypass karo (taaki next-intl crash na ho)
+  // 1. API aur Auth ko sabse PEHLE bypass karo
   if (pathname.startsWith('/api') || pathname.startsWith('/auth')) {
     return NextResponse.next();
   }
@@ -30,7 +30,7 @@ export default function middleware(request) {
   const isProtectedRoute = cleanPath.startsWith('/dashboard') || cleanPath.startsWith('/analytics') || cleanPath.startsWith('/onboarding');
   const isAuthRoute = cleanPath === '/login' || cleanPath === '/signup';
 
-  // 6. Security Redirects (Using standard NextResponse)
+  // 6. Security Redirects
   if (isProtectedRoute && !hasSession) {
     return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
   }
