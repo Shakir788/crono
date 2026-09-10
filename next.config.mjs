@@ -4,13 +4,15 @@ const withNextIntl = createNextIntlPlugin('./i18n.js');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/fr',
+        permanent: false,
+      },
+    ];
   },
-  typescript: {
-    // Type errors ko ignore karega
-    ignoreBuildErrors: true,
-  }
 };
 
-export default withNextIntl(nextConfig); 
+export default withNextIntl(nextConfig);
